@@ -13,20 +13,17 @@ public partial class Main : Node
 	[Export] private BuildingResource towerResource, villageResource;
 	[ExportGroup("UI")]
 	[Export] private GameUI gameUI;
+	[Export] private Sprite2D cursorSprite;
 
-
-	private Sprite2D cursorSprite;
 	private Vector2I? hoveredGridCell;
 	private BuildingResource buildingToPlaceResource;
 	private bool multiBuild = false;
 
 	public override void _Ready()
 	{
-		cursorSprite = GetNode("Sprite2D") as Sprite2D;
-
 		cursorSprite.Visible = false;
-		gameUI.PlaceTowerButtonPressed += OnTowerButtonPressed;
-		gameUI.PlaceVillageButtonPressed += OnVillageButtonPressed;
+		gameUI.placeTowerButton.Pressed += OnTowerButtonPressed;
+		gameUI.placeVillageButton.Pressed += OnVillageButtonPressed;
 		gridManager.ResourceTilesUpdated += OnResourceTilesUpdated;
 	}
 

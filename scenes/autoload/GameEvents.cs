@@ -9,17 +9,13 @@ public partial class GameEvents : Node
 
 	[Signal] public delegate void BuildingPlacedEventHandler(BuildingComponent buildingComponent);
 
-	public override void _Ready() {
-		Instance = this;
+	public override void _Notification(int what)
+	{
+		if (what == NotificationSceneInstantiated)
+		{
+			Instance = this;
+		}
 	}
-
-	// public override void _Notification(int what)
-	// {
-	// 	if (what == NotificationSceneInstantiated)
-	// 	{
-	// 		Instance = this;
-	// 	}
-	// }
 
 	public static void EmitBuildingPlaced(BuildingComponent buildingComponent)
 	{

@@ -12,13 +12,14 @@
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_elqb8"]
 size = Vector2(64, 64)
 
-[node name="Main" type="Node" node_paths=PackedStringArray("gridManager", "ySortRoot", "gameUI")]
+[node name="Main" type="Node" node_paths=PackedStringArray("gridManager", "ySortRoot", "gameUI", "cursorSprite")]
 script = ExtResource("1_o5qli")
 gridManager = NodePath("GridManager")
 ySortRoot = NodePath("YSortRoot")
 towerResource = ExtResource("2_c01mt")
 villageResource = ExtResource("3_nxtc6")
 gameUI = NodePath("GameUI")
+cursorSprite = NodePath("Sprite2D")
 
 [node name="GridManager" parent="." node_paths=PackedStringArray("highlightTileMapLayer", "baseTerrainTileMapLayer") instance=ExtResource("2_rarhs")]
 highlightTileMapLayer = NodePath("../HighlightTileMapLayer")
@@ -49,3 +50,5 @@ texture = SubResource("PlaceholderTexture2D_elqb8")
 centered = false
 
 [node name="GameUI" parent="." instance=ExtResource("8_jlsqs")]
+
+[editable path="GameUI"]
