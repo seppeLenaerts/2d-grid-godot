@@ -1,29 +1,28 @@
-[gd_scene load_steps=10 format=4 uid="uid://ckwmvluyobb5t"]
+[gd_scene load_steps=9 format=4 uid="uid://ckwmvluyobb5t"]
 
 [ext_resource type="Script" uid="uid://6pgqnqu1fdm5" path="res://scenes/Main.cs" id="1_o5qli"]
 [ext_resource type="TileSet" uid="uid://dbq3tpu0o0lfh" path="res://resources/tiles.tres" id="2_0bbpv"]
-[ext_resource type="Resource" uid="uid://ck177unf45rye" path="res://resources/buildings/tower.tres" id="2_c01mt"]
 [ext_resource type="PackedScene" uid="uid://in5d1c7mvehy" path="res://scenes/managers/GridManager.tscn" id="2_rarhs"]
 [ext_resource type="TileSet" uid="uid://h4votuun4se3" path="res://resources/highlight_tileset.tres" id="2_rvslj"]
-[ext_resource type="Resource" uid="uid://dum3hpirsgsf8" path="res://resources/buildings/village.tres" id="3_nxtc6"]
+[ext_resource type="PackedScene" uid="uid://ckbyem6ojptpa" path="res://scenes/managers/BuildingManager.tscn" id="3_nxtc6"]
 [ext_resource type="PackedScene" uid="uid://byn4cvfl1ukui" path="res://scenes/buildings/Base.tscn" id="5_vcsgt"]
 [ext_resource type="PackedScene" uid="uid://bwqllg2wnqy56" path="res://scenes/ui/GameUI.tscn" id="8_jlsqs"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_elqb8"]
 size = Vector2(64, 64)
 
-[node name="Main" type="Node" node_paths=PackedStringArray("gridManager", "ySortRoot", "gameUI", "cursorSprite")]
+[node name="Main" type="Node"]
 script = ExtResource("1_o5qli")
-gridManager = NodePath("GridManager")
-ySortRoot = NodePath("YSortRoot")
-towerResource = ExtResource("2_c01mt")
-villageResource = ExtResource("3_nxtc6")
-gameUI = NodePath("GameUI")
-cursorSprite = NodePath("Sprite2D")
 
 [node name="GridManager" parent="." node_paths=PackedStringArray("highlightTileMapLayer", "baseTerrainTileMapLayer") instance=ExtResource("2_rarhs")]
 highlightTileMapLayer = NodePath("../HighlightTileMapLayer")
 baseTerrainTileMapLayer = NodePath("../YSortRoot/BaseTerrainTileMapLayer")
+
+[node name="BuildingManager" parent="." node_paths=PackedStringArray("gridManager", "ySortRoot", "gameUI", "cursorSprite") instance=ExtResource("3_nxtc6")]
+gridManager = NodePath("../GridManager")
+ySortRoot = NodePath("../YSortRoot")
+gameUI = NodePath("../GameUI")
+cursorSprite = NodePath("../Sprite2D")
 
 [node name="YSortRoot" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -50,5 +49,3 @@ texture = SubResource("PlaceholderTexture2D_elqb8")
 centered = false
 
 [node name="GameUI" parent="." instance=ExtResource("8_jlsqs")]
-
-[editable path="GameUI"]

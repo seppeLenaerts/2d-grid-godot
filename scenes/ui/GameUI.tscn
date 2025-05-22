@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwqllg2wnqy56"]
+[gd_scene load_steps=4 format=3 uid="uid://bwqllg2wnqy56"]
 
 [ext_resource type="Script" uid="uid://4c1teosvwmlh" path="res://scenes/ui/GameUI.cs" id="1_r8hcy"]
+[ext_resource type="Resource" uid="uid://ck177unf45rye" path="res://resources/buildings/tower.tres" id="2_jwej7"]
+[ext_resource type="Resource" uid="uid://dum3hpirsgsf8" path="res://resources/buildings/village.tres" id="3_xsfm0"]
 
-[node name="GameUI" type="MarginContainer" node_paths=PackedStringArray("placeTowerButton", "placeVillageButton")]
+[node name="GameUI" type="MarginContainer" node_paths=PackedStringArray("hBoxContainer")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,18 +15,10 @@ theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 16
 script = ExtResource("1_r8hcy")
-placeTowerButton = NodePath("HBoxContainer/PlaceTowerButton")
-placeVillageButton = NodePath("HBoxContainer/PlaceVillageButton")
+buildingResources = Array[Object]([ExtResource("2_jwej7"), ExtResource("3_xsfm0")])
+hBoxContainer = NodePath("HBoxContainer")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_constants/separation = 16
-
-[node name="PlaceTowerButton" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-text = "Place Tower"
-
-[node name="PlaceVillageButton" type="Button" parent="HBoxContainer"]
-layout_mode = 2
-text = "Place Village"
